@@ -6,7 +6,7 @@ export default function QuickActions() {
     <div className="grid grid-cols-4 gap-2 mb-5">
       {quickActions.map((action) => (
         <button 
-        type="buttom"
+        type="button"
         className="flex flex-col items-center gap-2 bg-white rounded-2xl py-4 border-none cursor-pointer hover:bg-gray-50 transition-colors shadow-sm"
         >
         <span className="text-gray-800">{action.icon}</span>
