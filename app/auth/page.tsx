@@ -1,13 +1,13 @@
+
 "use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { AuthMode } from "@/types";
+import type { AuthMode } from "@/types";
 import Logo from "@/components/ui/Logo";
 import { ArrowLeftIcon } from "@/components/ui/Icons";
 import SignInForm from "@/components/auth/SignInForm";
 import SignUpForm from "@/components/auth/SignUpForm";
-import { SignInFormData, SignUpFormData } from "@/types";
 
 export default function AuthPage() {
   const router = useRouter();
@@ -23,18 +23,6 @@ export default function AuthPage() {
     }, 200);
   };
 
-  const handleSignIn = (data: SignInFormData): void => {
-    console.log("Sign in:", data);
-    // 🔌 await signInWithEmailAndPassword(auth, data.email, data.password)
-    // router.push("/dashboard")
-  };
-
-  const handleSignUp = (data: SignUpFormData): void => {
-    console.log("Sign up:", data);
-    // 🔌 await createUserWithEmailAndPassword(auth, data.email, data.password)
-    // router.push("/dashboard")
-  };
-
   return (
     <div className="flex flex-col min-h-svh bg-white text-gray-900">
       <div className="flex flex-col px-6 pt-6 pb-10 w-full max-w-[430px] mx-auto">
@@ -42,6 +30,7 @@ export default function AuthPage() {
         {/* Header: back + centered logo */}
         <div className="flex items-center justify-between mb-7">
           <button
+            type="button"
             onClick={() => router.push("/")}
             className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 cursor-pointer border-none hover:bg-gray-200 transition-colors"
           >
@@ -75,7 +64,6 @@ export default function AuthPage() {
               }`}
             >
               {m === "signin" ? "Sign In" : "Sign Up"}
-              {/* Animated lime underline */}
               <span
                 className="absolute bottom-[-2px] h-[2.5px] bg-[#AAFF00] rounded-full transition-all duration-300 ease-out"
                 style={{
@@ -97,15 +85,9 @@ export default function AuthPage() {
           }}
         >
           {mode === "signin" ? (
-            <SignInForm
-              onSwitch={() => switchMode("signup")}
-              onSubmit={handleSignIn}
-            />
+            <SignInForm onSwitch={() => switchMode("signup")} />
           ) : (
-            <SignUpForm
-              onSwitch={() => switchMode("signin")}
-              onSubmit={handleSignUp}
-            />
+            <SignUpForm onSwitch={() => switchMode("signin")} />
           )}
         </div>
 
