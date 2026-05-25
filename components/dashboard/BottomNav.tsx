@@ -1,5 +1,6 @@
-import React, { use, useState } from 'react';
-"use client"
+// components/dashboard/BottomNav.tsx
+"use client";
+
 import { useState } from "react";
 import type { TabId } from "@/types";
 import { navTabs } from "@/components/dashboard/dashboardData";
