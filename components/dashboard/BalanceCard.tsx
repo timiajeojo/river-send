@@ -1,4 +1,5 @@
-"use client"
+// components/dashboard/BalanceCard.tsx
+"use client";
 
 import { useState } from "react";
 

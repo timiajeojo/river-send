@@ -1,5 +1,7 @@
 
 
+// components/dashboard/TransactionList.tsx
+
 import { transactions } from "@/components/dashboard/dashboardData";
 import type { Transaction } from "@/types";
 

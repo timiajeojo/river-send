@@ -1,4 +1,6 @@
 
+// components/dashboard/DashboardHeader.tsx
+
 export default function DashboardHeader() {
   return (
     <div className="flex items-center justify-between mb-5">

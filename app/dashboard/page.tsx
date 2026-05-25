@@ -1,3 +1,4 @@
+// app/dashboard/page.tsx
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import BalanceCard from "@/components/dashboard/BalanceCard";
 import QuickActions from "@/components/dashboard/QuickActions";
