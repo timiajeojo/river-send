@@ -53,7 +53,7 @@ export const transactions: Transaction[] = [
     date: formatDate(3),
     time: formatTime(8, 16, "PM"),
     amount: "-$15.49",
-    positive: fallse,
+    positive: false,
     bg: "bg-[#E50914]",
     logo: "netflix",
   },
