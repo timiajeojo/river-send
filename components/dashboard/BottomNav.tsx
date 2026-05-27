@@ -1,34 +1,51 @@
 // components/dashboard/BottomNav.tsx
 "use client";
 
-import { useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import type { TabId } from "@/types";
 import { navTabs } from "@/components/dashboard/dashboardData";
 
+const tabRoutes: Record<TabId, string> = {
+  home:     "/dashboard",
+  activity: "/activity",
+  transfer: "/dashboard",
+  profile:  "/dashboard",
+};
+
 export default function BottomNav() {
-  const [active, setActive] = useState<TabId>("home");
+  const router   = useRouter();
+  const pathname = usePathname();
+
+  const activeTab: TabId =
+    pathname === "/activity"  ? "activity" :
+    pathname === "/dashboard" ? "home"     : "home";
 
   return (
     <div className="shrink-0 bg-white border-t border-gray-100 px-2 pt-2 pb-2">
       <div className="grid grid-cols-4">
-        {navTabs.map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            onClick={() => setActive(tab.id)}
-            className={`flex flex-col items-center gap-1 py-2 rounded-xl border-none cursor-pointer bg-transparent transition-colors ${
-              active === tab.id ? "text-gray-900" : "text-gray-400"
-            }`}
-          >
-            <span>{tab.icon}</span>
-            <span className={`text-[11px] font-semibold ${active === tab.id ? "text-gray-900" : "text-gray-400"}`}>
-              {tab.label}
-            </span>
-            {active === tab.id && (
-              <span className="w-5 h-[2.5px] bg-[#AAFF00] rounded-full" />
-            )}
-          </button>
-        ))}
+        {navTabs.map((tab) => {
+          const isActive = tab.id === activeTab;
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => router.push(tabRoutes[tab.id])}
+              className={`flex flex-col items-center gap-1 py-2 rounded-xl border-none cursor-pointer bg-transparent transition-colors ${
+                isActive ? "text-gray-900" : "text-gray-400"
+              }`}
+            >
+              <span>{tab.icon}</span>
+              <span className={`text-[11px] font-semibold ${
+                isActive ? "text-gray-900" : "text-gray-400"
+              }`}>
+                {tab.label}
+              </span>
+              {isActive && (
+                <span className="w-5 h-[2.5px] bg-[#AAFF00] rounded-full" />
+              )}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

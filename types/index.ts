@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 export type AuthMode = "signin" | "signup";
 export type Page = "getstarted" | "auth" | "dashboard";
 export type TabId = "home" | "activity" | "transfer" | "profile";
+export type ActivityFilter = "all" | "transfers" | "payments" | "subscriptions";
 
 export interface Slide {
   headline: string;
@@ -34,7 +35,8 @@ export interface Transaction {
   positive: boolean;
   bg: string;
   initials?: string;
-  logo?: "spotify" | "amazon" | "netflix";
+  logo?: "spotify" | "amazon" | "netflix" | "apple" | "youtube" | "uber";
+  category: "transfers" | "payments" | "subscriptions";
 }
 
 export interface QuickAction {

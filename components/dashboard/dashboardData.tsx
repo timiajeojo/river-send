@@ -1,3 +1,4 @@
+// components/dashboard/dashboardData.tsx
 import type { ReactNode } from "react";
 import type { Transaction, QuickAction, NavTab } from "@/types";
 
