@@ -2,7 +2,7 @@
 import type { ReactNode } from "react";
 import type { Transaction, QuickAction, NavTab } from "@/types";
 
-// ── Date helpers ────────────────────────────────────────────
+// ── Date helpers ─────────────────────────────────────────────
 export function formatDate(daysAgo: number): string {
   const d = new Date();
   d.setDate(d.getDate() - daysAgo);
@@ -17,50 +17,145 @@ export function formatTime(h: number, m: number, ampm: "AM" | "PM"): string {
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")} ${ampm}`;
 }
 
-// ── Transactions ────────────────────────────────────────────
+// ── All transactions ─────────────────────────────────────────
 export const transactions: Transaction[] = [
+  // TODAY
   {
     id: 1,
     name: "Spotify Premium",
-    date: formatDate(1),
+    date: formatDate(0),
     time: formatTime(9, 41, "AM"),
     amount: "-$9.99",
     positive: false,
     bg: "bg-[#1DB954]",
     logo: "spotify",
+    category: "subscriptions",
   },
   {
     id: 2,
+    name: "Apple iCloud",
+    date: formatDate(0),
+    time: formatTime(11, 5, "AM"),
+    amount: "-$2.99",
+    positive: false,
+    bg: "bg-gray-900",
+    logo: "apple",
+    category: "subscriptions",
+  },
+  {
+    id: 3,
+    name: "Salary from Acme Inc.",
+    date: formatDate(0),
+    time: formatTime(9, 0, "AM"),
+    amount: "+$4,250.00",
+    positive: true,
+    bg: "bg-green-100",
+    category: "transfers",
+  },
+
+  // YESTERDAY
+  {
+    id: 4,
     name: "Amazon",
-    date: formatDate(2),
+    date: formatDate(1),
     time: formatTime(3, 21, "PM"),
     amount: "-$78.49",
     positive: false,
     bg: "bg-[#232F3E]",
     logo: "amazon",
+    category: "payments",
   },
   {
-    id: 3,
-    name: "Salary from Acme Inc.",
-    date: formatDate(2),
-    time: formatTime(9, 0, "AM"),
-    amount: "+$4,250.00",
-    positive: true,
-    bg: "bg-green-100",
-  },
-  {
-    id: 4,
+    id: 5,
     name: "Netflix",
-    date: formatDate(3),
+    date: formatDate(1),
     time: formatTime(8, 16, "PM"),
     amount: "-$15.49",
     positive: false,
     bg: "bg-[#E50914]",
     logo: "netflix",
+    category: "subscriptions",
+  },
+  {
+    id: 6,
+    name: "YouTube Premium",
+    date: formatDate(1),
+    time: formatTime(10, 0, "AM"),
+    amount: "-$13.99",
+    positive: false,
+    bg: "bg-[#FF0000]",
+    logo: "youtube",
+    category: "subscriptions",
+  },
+  {
+    id: 7,
+    name: "Bank Transfer",
+    date: formatDate(1),
+    time: formatTime(2, 45, "PM"),
+    amount: "+$500.00",
+    positive: true,
+    bg: "bg-blue-100",
+    category: "transfers",
+  },
+
+  // 2 DAYS AGO
+  {
+    id: 8,
+    name: "Uber",
+    date: formatDate(2),
+    time: formatTime(7, 30, "PM"),
+    amount: "-$24.50",
+    positive: false,
+    bg: "bg-gray-900",
+    logo: "uber",
+    category: "payments",
+  },
+  {
+    id: 9,
+    name: "Electric Bill",
+    date: formatDate(2),
+    time: formatTime(10, 0, "AM"),
+    amount: "-$120.00",
+    positive: false,
+    bg: "bg-yellow-100",
+    category: "payments",
+  },
+  {
+    id: 10,
+    name: "Freelance Payment",
+    date: formatDate(2),
+    time: formatTime(4, 15, "PM"),
+    amount: "+$800.00",
+    positive: true,
+    bg: "bg-green-100",
+    category: "transfers",
+  },
+
+  // 3 DAYS AGO
+  {
+    id: 11,
+    name: "Amazon Prime",
+    date: formatDate(3),
+    time: formatTime(9, 0, "AM"),
+    amount: "-$14.99",
+    positive: false,
+    bg: "bg-[#232F3E]",
+    logo: "amazon",
+    category: "subscriptions",
+  },
+  {
+    id: 12,
+    name: "Internet Bill",
+    date: formatDate(3),
+    time: formatTime(11, 0, "AM"),
+    amount: "-$59.99",
+    positive: false,
+    bg: "bg-blue-200",
+    category: "payments",
   },
 ];
 
-// ── Quick actions ───────────────────────────────────────────
+// ── Quick actions ────────────────────────────────────────────
 export const quickActions: QuickAction[] = [
   {
     label: "Send",
@@ -101,7 +196,7 @@ export const quickActions: QuickAction[] = [
   },
 ];
 
-// ── Nav tabs ────────────────────────────────────────────────
+// ── Nav tabs ─────────────────────────────────────────────────
 export const navTabs: NavTab[] = [
   {
     id: "home",
