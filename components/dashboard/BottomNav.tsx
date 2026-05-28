@@ -1,4 +1,4 @@
-// components/dashboard/BottomNav.tsx
+import React, { use } from 'react';
 "use client";
 
 import { useRouter, usePathname } from "next/navigation";
@@ -8,7 +8,7 @@ import { navTabs } from "@/components/dashboard/dashboardData";
 const tabRoutes: Record<TabId, string> = {
   home:     "/dashboard",
   activity: "/activity",
-  transfer: "/dashboard",
+  transfer: "/transfer",
   profile:  "/dashboard",
 };
 
@@ -18,6 +18,7 @@ export default function BottomNav() {
 
   const activeTab: TabId =
     pathname === "/activity"  ? "activity" :
+    pathname === "/transfer"  ? "transfer" :
     pathname === "/dashboard" ? "home"     : "home";
 
   return (
