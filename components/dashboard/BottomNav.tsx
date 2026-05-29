@@ -9,7 +9,7 @@ const tabRoutes: Record<TabId, string> = {
   home:     "/dashboard",
   activity: "/activity",
   transfer: "/transfer",
-  profile:  "/dashboard",
+  profile:  "/profile",
 };
 
 export default function BottomNav() {
@@ -17,9 +17,10 @@ export default function BottomNav() {
   const pathname = usePathname();
 
   const activeTab: TabId =
-    pathname === "/activity"  ? "activity" :
-    pathname === "/transfer"  ? "transfer" :
-    pathname === "/dashboard" ? "home"     : "home";
+    pathname === "/activity"        ? "activity" :
+    pathname === "/transfer"        ? "transfer" :
+    pathname.startsWith("/profile") ? "profile"  :
+    pathname === "/dashboard"       ? "home"      : "home";
 
   return (
     <div className="shrink-0 bg-white border-t border-gray-100 px-2 pt-2 pb-2">
