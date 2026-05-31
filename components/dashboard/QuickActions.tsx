@@ -8,7 +8,8 @@ export default function QuickActions() {
   const router = useRouter();
 
   const handleAction = (label: string) => {
-    if (label === "Send") router.push("/transfer");
+    if (label === "Send")    router.push("/transfer");
+    if (label === "Receive") router.push("/receive");
   };
 
   return (
