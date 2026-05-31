@@ -1,4 +1,5 @@
 
+// components/dashboard/QuickActions.tsx
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -8,8 +9,9 @@ export default function QuickActions() {
   const router = useRouter();
 
   const handleAction = (label: string) => {
-    if (label === "Send")    router.push("/transfer");
-    if (label === "Receive") router.push("/receive");
+    if (label === "Send")      router.push("/transfer");
+    if (label === "Receive")   router.push("/receive");
+    if (label === "Pay Bills") router.push("/pay-bills");
   };
 
   return (
