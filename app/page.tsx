@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Slide } from "@/types";
+import type { Slide } from "@/types";
 
 const slides: Slide[] = [
   {
@@ -39,6 +39,7 @@ export default function GetStartedPage() {
   };
 
   return (
+<<<<<<< HEAD
     /* Full screen dark background on all sizes */
     <div className="min-h-svh w-full bg-[#0a0a0a] flex items-center justify-center">
 
@@ -51,6 +52,17 @@ export default function GetStartedPage() {
 
         {/* Hero photo */}
         <div className="relative flex-1 min-h-0 sm:min-h-[460px]">
+=======
+    <div className="min-h-svh w-full bg-[#0a0a0a]">
+
+      {/* ════════════════════════════════════════
+          MOBILE  (< md)  — full screen hero
+      ════════════════════════════════════════ */}
+      <div className="flex flex-col min-h-svh md:hidden">
+
+        {/* Photo */}
+        <div className="relative flex-1 min-h-0">
+>>>>>>> e26fcc9 (made auth and landing page responsive)
           <div className="absolute inset-0 overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=85&auto=format&fit=crop&crop=top"
@@ -58,19 +70,27 @@ export default function GetStartedPage() {
               className="w-full h-full object-cover object-top"
             />
           </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e26fcc9 (made auth and landing page responsive)
           {/* Lime arc */}
           <div className="absolute inset-0 pointer-events-none z-[2]">
             <svg className="absolute" style={{ left: "-18%", top: "8%", width: "110%" }} viewBox="0 0 500 520" fill="none">
               <ellipse cx="210" cy="270" rx="195" ry="195" stroke="#AAFF00" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="900" strokeDashoffset="300" />
             </svg>
           </div>
+<<<<<<< HEAD
 
           {/* Gradient fade */}
+=======
+          {/* Fade */}
+>>>>>>> e26fcc9 (made auth and landing page responsive)
           <div className="absolute inset-0 z-[3]" style={{ background: "linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.75) 68%,#0a0a0a 100%)" }} />
         </div>
 
         {/* Bottom content */}
+<<<<<<< HEAD
         <div className="relative z-10 bg-[#0a0a0a] flex flex-col items-center text-center px-7 pb-10 pt-2 shrink-0 sm:px-10">
           <div className={`mb-5 transition-all duration-300 ease-in-out ${fading ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`}>
             <h1 className="text-white text-[28px] sm:text-[34px] font-extrabold leading-[1.15] tracking-tight">
@@ -88,16 +108,40 @@ export default function GetStartedPage() {
           <div className="flex items-center gap-2 mb-6">
             {slides.map((_, i) => (
               <button key={i} type="button" onClick={() => goTo(i)} aria-label={`Slide ${i + 1}`}
+=======
+        <div className="relative z-10 bg-[#0a0a0a] flex flex-col items-center text-center px-7 pb-10 pt-2 shrink-0">
+          <div className={`mb-5 transition-all duration-300 ease-in-out ${fading ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`}>
+            <h1 className="text-white text-[28px] font-extrabold leading-[1.15] tracking-tight">
+              {slides[active].headline}
+            </h1>
+            <span className="block text-[#AAFF00] text-[28px] font-extrabold leading-[1.15] tracking-tight mb-3">
+              {slides[active].accent}
+            </span>
+            <div className="w-8 h-[3px] bg-[#AAFF00] rounded-full mx-auto mb-3" />
+            <p className="text-white/50 text-[14px] leading-relaxed max-w-[280px] mx-auto">
+              {slides[active].sub}
+            </p>
+          </div>
+          <div className="flex items-center gap-2 mb-6">
+            {slides.map((_, i) => (
+              <button key={i} type="button" onClick={() => goTo(i)}
+>>>>>>> e26fcc9 (made auth and landing page responsive)
                 className={`h-2 rounded-full border-none cursor-pointer transition-all duration-300 ${i === active ? "w-6 bg-[#AAFF00]" : "w-2 bg-[#444]"}`}
               />
             ))}
           </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e26fcc9 (made auth and landing page responsive)
           <button type="button" onClick={() => router.push("/auth")}
             className="w-full py-4 bg-[#AAFF00] text-black text-[16px] font-bold rounded-2xl border-none cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all duration-200">
             Get Started
           </button>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e26fcc9 (made auth and landing page responsive)
           <p className="mt-3 text-[13px] text-[#666]">
             Already have an account?{" "}
             <button type="button" onClick={() => router.push("/auth")}
@@ -108,16 +152,85 @@ export default function GetStartedPage() {
         </div>
       </div>
 
+<<<<<<< HEAD
       {/* ── DESKTOP: two column split layout ── */}
       <div className="hidden lg:flex w-full min-h-svh">
 
         {/* Left — full height image with overlay text */}
+=======
+      {/* ════════════════════════════════════════
+          TABLET  (md – lg)  — centered card
+      ════════════════════════════════════════ */}
+      <div className="hidden md:flex lg:hidden min-h-svh items-center justify-center p-8">
+        <div className="relative flex flex-col w-full max-w-[420px] min-h-[700px] rounded-[44px] overflow-hidden shadow-[0_48px_120px_rgba(0,0,0,0.8)]">
+
+          {/* Photo */}
+          <div className="relative flex-1 min-h-[420px]">
+            <div className="absolute inset-0 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=85&auto=format&fit=crop&crop=top"
+                alt="hero"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div className="absolute inset-0 pointer-events-none z-[2]">
+              <svg className="absolute" style={{ left: "-18%", top: "8%", width: "110%" }} viewBox="0 0 500 520" fill="none">
+                <ellipse cx="210" cy="270" rx="195" ry="195" stroke="#AAFF00" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="900" strokeDashoffset="300" />
+              </svg>
+            </div>
+            <div className="absolute inset-0 z-[3]" style={{ background: "linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.75) 68%,#0a0a0a 100%)" }} />
+          </div>
+
+          {/* Bottom */}
+          <div className="relative z-10 bg-[#0a0a0a] flex flex-col items-center text-center px-10 pb-10 pt-2 shrink-0">
+            <div className={`mb-5 transition-all duration-300 ease-in-out ${fading ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`}>
+              <h1 className="text-white text-[32px] font-extrabold leading-[1.15] tracking-tight">
+                {slides[active].headline}
+              </h1>
+              <span className="block text-[#AAFF00] text-[32px] font-extrabold leading-[1.15] tracking-tight mb-3">
+                {slides[active].accent}
+              </span>
+              <div className="w-8 h-[3px] bg-[#AAFF00] rounded-full mx-auto mb-3" />
+              <p className="text-white/50 text-[15px] leading-relaxed max-w-[300px] mx-auto">
+                {slides[active].sub}
+              </p>
+            </div>
+            <div className="flex items-center gap-2 mb-6">
+              {slides.map((_, i) => (
+                <button key={i} type="button" onClick={() => goTo(i)}
+                  className={`h-2 rounded-full border-none cursor-pointer transition-all duration-300 ${i === active ? "w-6 bg-[#AAFF00]" : "w-2 bg-[#444]"}`}
+                />
+              ))}
+            </div>
+            <button type="button" onClick={() => router.push("/auth")}
+              className="w-full py-4 bg-[#AAFF00] text-black text-[16px] font-bold rounded-2xl border-none cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all duration-200">
+              Get Started
+            </button>
+            <p className="mt-3 text-[13px] text-[#666]">
+              Already have an account?{" "}
+              <button type="button" onClick={() => router.push("/auth")}
+                className="text-[#AAFF00] font-semibold bg-transparent border-none cursor-pointer text-[13px]">
+                Sign In
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* ════════════════════════════════════════
+          DESKTOP  (lg+)  — two column split
+      ════════════════════════════════════════ */}
+      <div className="hidden lg:flex min-h-svh">
+
+        {/* Left — full height photo */}
+>>>>>>> e26fcc9 (made auth and landing page responsive)
         <div className="relative flex-1 overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200&q=85&auto=format&fit=crop&crop=top"
             alt="hero"
             className="w-full h-full object-cover object-top"
           />
+<<<<<<< HEAD
 
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/70" />
@@ -130,11 +243,25 @@ export default function GetStartedPage() {
           </div>
 
           {/* Logo top left */}
+=======
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/80" />
+          {/* Lime arc */}
+          <div className="absolute inset-0 pointer-events-none">
+            <svg className="absolute" style={{ left: "-5%", top: "10%", width: "75%" }} viewBox="0 0 500 520" fill="none">
+              <ellipse cx="210" cy="270" rx="195" ry="195" stroke="#AAFF00" strokeWidth="2" strokeLinecap="round" strokeDasharray="900" strokeDashoffset="300" />
+            </svg>
+          </div>
+          {/* Logo */}
+>>>>>>> e26fcc9 (made auth and landing page responsive)
           <div className="absolute top-10 left-10 flex items-center gap-2.5">
             <div className="w-10 h-10 rounded-xl bg-[#AAFF00] flex items-center justify-center text-black text-xl font-black">R</div>
             <span className="text-white text-[22px] font-extrabold tracking-tight">Riverpay</span>
           </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e26fcc9 (made auth and landing page responsive)
           {/* Bottom text */}
           <div className="absolute bottom-12 left-10 right-10">
             <div className={`transition-all duration-300 ${fading ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`}>
@@ -147,8 +274,11 @@ export default function GetStartedPage() {
                 {slides[active].sub}
               </p>
             </div>
+<<<<<<< HEAD
 
             {/* Dots */}
+=======
+>>>>>>> e26fcc9 (made auth and landing page responsive)
             <div className="flex items-center gap-2 mt-6">
               {slides.map((_, i) => (
                 <button key={i} type="button" onClick={() => goTo(i)}
@@ -159,12 +289,25 @@ export default function GetStartedPage() {
           </div>
         </div>
 
+<<<<<<< HEAD
         {/* Right — sign up / sign in panel */}
         <div className="w-[480px] xl:w-[520px] shrink-0 bg-[#0a0a0a] flex flex-col items-center justify-center px-12 xl:px-16">
 
           {/* Stats row */}
           <div className="flex gap-8 mb-12 self-start">
             {[{ val: "$2B+", label: "Transferred" }, { val: "2M+", label: "Users" }, { val: "0 Fees", label: "This Month" }].map((s) => (
+=======
+        {/* Right — CTA panel */}
+        <div className="w-[460px] xl:w-[520px] shrink-0 bg-[#0a0a0a] flex flex-col justify-center px-12 xl:px-16 py-16">
+
+          {/* Stats */}
+          <div className="flex gap-8 mb-12">
+            {[
+              { val: "$2B+",  label: "Transferred" },
+              { val: "2M+",   label: "Users" },
+              { val: "0 Fees",label: "This Month" },
+            ].map((s) => (
+>>>>>>> e26fcc9 (made auth and landing page responsive)
               <div key={s.label} className="flex flex-col gap-1">
                 <span className="text-[22px] font-bold text-[#AAFF00]">{s.val}</span>
                 <span className="text-[11px] text-[#666] uppercase tracking-widest">{s.label}</span>
@@ -172,6 +315,7 @@ export default function GetStartedPage() {
             ))}
           </div>
 
+<<<<<<< HEAD
           {/* Headline */}
           <div className="self-start mb-10">
             <p className="text-[#AAFF00] text-[13px] font-semibold uppercase tracking-widest mb-3">Get Started Today</p>
@@ -185,18 +329,42 @@ export default function GetStartedPage() {
 
           {/* CTAs */}
           <div className="w-full flex flex-col gap-3">
+=======
+          {/* Copy */}
+          <p className="text-[#AAFF00] text-[13px] font-semibold uppercase tracking-widest mb-3">
+            Get Started Today
+          </p>
+          <h2 className="text-white text-[32px] xl:text-[38px] font-extrabold tracking-tight leading-[1.15] mb-4">
+            Banking built<br />for your life
+          </h2>
+          <p className="text-white/40 text-[15px] leading-relaxed mb-10 max-w-[320px]">
+            Join millions managing money smarter with Riverpay. Fast, secure, and always free.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col gap-3">
+>>>>>>> e26fcc9 (made auth and landing page responsive)
             <button type="button" onClick={() => router.push("/auth")}
               className="w-full py-4 bg-[#AAFF00] text-black text-[16px] font-bold rounded-2xl border-none cursor-pointer hover:opacity-90 transition-opacity">
               Create Free Account
             </button>
             <button type="button" onClick={() => router.push("/auth")}
+<<<<<<< HEAD
               className="w-full py-4 bg-white/10 text-white text-[16px] font-semibold rounded-2xl border border-white/10 cursor-pointer hover:bg-white/15 transition-colors">
+=======
+              className="w-full py-4 bg-white/8 text-white text-[16px] font-semibold rounded-2xl border border-white/10 cursor-pointer hover:bg-white/15 transition-colors">
+>>>>>>> e26fcc9 (made auth and landing page responsive)
               Sign In
             </button>
           </div>
 
+<<<<<<< HEAD
           {/* Trust note */}
           <p className="mt-6 text-[12px] text-white/30 text-center">
+=======
+          {/* Trust */}
+          <p className="mt-8 text-[12px] text-white/25 text-center">
+>>>>>>> e26fcc9 (made auth and landing page responsive)
             🔒 Bank-level security · No hidden fees · Cancel anytime
           </p>
         </div>
