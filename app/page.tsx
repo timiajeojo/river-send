@@ -1,375 +1,137 @@
+// app/dashboard/page.tsx
 "use client";
 
-import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import type { Slide } from "@/types";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import BalanceCard from "@/components/dashboard/BalanceCard";
+import QuickActions from "@/components/dashboard/QuickActions";
+import PromoBanner from "@/components/dashboard/PromoBanner";
+import TransactionList from "@/components/dashboard/TransactionList";
+import BottomNav from "@/components/dashboard/BottomNav";
 
-const slides: Slide[] = [
-  {
-    headline: "Banking Built Just",
-    accent: "For You",
-    sub: "Smart, secure and seamless banking for your everyday life.",
-  },
-  {
-    headline: "Send Money Anywhere",
-    accent: "Instantly",
-    sub: "Transfer funds locally or internationally with zero fees this month.",
-  },
-  {
-    headline: "Your Money, Your",
-    accent: "Control",
-    sub: "Track spending, manage cards, and grow your savings all in one place.",
-  },
+const navItems = [
+  { label: "Home",     route: "/dashboard", active: true,  icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> },
+  { label: "Activity", route: "/activity",  active: false, icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
+  { label: "Transfer", route: "/transfer",  active: false, icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> },
+  { label: "Profile",  route: "/profile",   active: false, icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> },
 ];
 
-export default function GetStartedPage() {
+export default function DashboardPage() {
   const router = useRouter();
-  const [active, setActive] = useState<number>(0);
-  const [fading, setFading] = useState<boolean>(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => goTo((active + 1) % slides.length), 4000);
-    return () => clearTimeout(t);
-  }, [active]);
-
-  const goTo = (idx: number): void => {
-    if (idx === active) return;
-    setFading(true);
-    setTimeout(() => { setActive(idx); setFading(false); }, 300);
-  };
 
   return (
-<<<<<<< HEAD
-    /* Full screen dark background on all sizes */
-    <div className="min-h-svh w-full bg-[#0a0a0a] flex items-center justify-center">
+    <div className="min-h-svh w-full bg-[#f5f5f5] flex flex-col lg:flex-row">
 
-      {/* ── MOBILE: full screen  |  TABLET+: centered phone card  |  DESKTOP: split layout ── */}
-
-      {/* Mobile + tablet — phone card */}
-      <div className="relative flex flex-col w-full h-svh
-        sm:h-auto sm:min-h-[750px] sm:max-w-[400px] sm:rounded-[44px] sm:overflow-hidden sm:shadow-[0_48px_120px_rgba(0,0,0,0.7)]
-        lg:hidden">
-
-        {/* Hero photo */}
-        <div className="relative flex-1 min-h-0 sm:min-h-[460px]">
-=======
-    <div className="min-h-svh w-full bg-[#0a0a0a]">
-
-      {/* ════════════════════════════════════════
-          MOBILE  (< md)  — full screen hero
-      ════════════════════════════════════════ */}
-      <div className="flex flex-col min-h-svh md:hidden">
-
-        {/* Photo */}
-        <div className="relative flex-1 min-h-0">
->>>>>>> e26fcc9 (made auth and landing page responsive)
-          <div className="absolute inset-0 overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=85&auto=format&fit=crop&crop=top"
-              alt="hero"
-              className="w-full h-full object-cover object-top"
-            />
+      {/* ── SIDEBAR — lg+ only ── */}
+      <aside className="hidden lg:flex flex-col w-[240px] xl:w-[260px] shrink-0 bg-white border-r border-gray-100 min-h-screen sticky top-0">
+        {/* Logo */}
+        <div className="px-6 py-6 border-b border-gray-100">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-[#AAFF00] flex items-center justify-center text-black text-lg font-black">R</div>
+            <span className="text-[20px] font-extrabold tracking-tight text-gray-900">Riverpay</span>
           </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> e26fcc9 (made auth and landing page responsive)
-          {/* Lime arc */}
-          <div className="absolute inset-0 pointer-events-none z-[2]">
-            <svg className="absolute" style={{ left: "-18%", top: "8%", width: "110%" }} viewBox="0 0 500 520" fill="none">
-              <ellipse cx="210" cy="270" rx="195" ry="195" stroke="#AAFF00" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="900" strokeDashoffset="300" />
-            </svg>
-          </div>
-<<<<<<< HEAD
-
-          {/* Gradient fade */}
-=======
-          {/* Fade */}
->>>>>>> e26fcc9 (made auth and landing page responsive)
-          <div className="absolute inset-0 z-[3]" style={{ background: "linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.75) 68%,#0a0a0a 100%)" }} />
         </div>
 
-        {/* Bottom content */}
-<<<<<<< HEAD
-        <div className="relative z-10 bg-[#0a0a0a] flex flex-col items-center text-center px-7 pb-10 pt-2 shrink-0 sm:px-10">
-          <div className={`mb-5 transition-all duration-300 ease-in-out ${fading ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`}>
-            <h1 className="text-white text-[28px] sm:text-[34px] font-extrabold leading-[1.15] tracking-tight">
-              {slides[active].headline}
-            </h1>
-            <span className="block text-[#AAFF00] text-[28px] sm:text-[34px] font-extrabold leading-[1.15] tracking-tight mb-3">
-              {slides[active].accent}
-            </span>
-            <div className="w-8 h-[3px] bg-[#AAFF00] rounded-full mx-auto mb-3" />
-            <p className="text-white/50 text-[14px] sm:text-[15px] leading-relaxed max-w-[280px] mx-auto">
-              {slides[active].sub}
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2 mb-6">
-            {slides.map((_, i) => (
-              <button key={i} type="button" onClick={() => goTo(i)} aria-label={`Slide ${i + 1}`}
-=======
-        <div className="relative z-10 bg-[#0a0a0a] flex flex-col items-center text-center px-7 pb-10 pt-2 shrink-0">
-          <div className={`mb-5 transition-all duration-300 ease-in-out ${fading ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`}>
-            <h1 className="text-white text-[28px] font-extrabold leading-[1.15] tracking-tight">
-              {slides[active].headline}
-            </h1>
-            <span className="block text-[#AAFF00] text-[28px] font-extrabold leading-[1.15] tracking-tight mb-3">
-              {slides[active].accent}
-            </span>
-            <div className="w-8 h-[3px] bg-[#AAFF00] rounded-full mx-auto mb-3" />
-            <p className="text-white/50 text-[14px] leading-relaxed max-w-[280px] mx-auto">
-              {slides[active].sub}
-            </p>
-          </div>
-          <div className="flex items-center gap-2 mb-6">
-            {slides.map((_, i) => (
-              <button key={i} type="button" onClick={() => goTo(i)}
->>>>>>> e26fcc9 (made auth and landing page responsive)
-                className={`h-2 rounded-full border-none cursor-pointer transition-all duration-300 ${i === active ? "w-6 bg-[#AAFF00]" : "w-2 bg-[#444]"}`}
-              />
-            ))}
-          </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> e26fcc9 (made auth and landing page responsive)
-          <button type="button" onClick={() => router.push("/auth")}
-            className="w-full py-4 bg-[#AAFF00] text-black text-[16px] font-bold rounded-2xl border-none cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all duration-200">
-            Get Started
-          </button>
-<<<<<<< HEAD
-
-=======
->>>>>>> e26fcc9 (made auth and landing page responsive)
-          <p className="mt-3 text-[13px] text-[#666]">
-            Already have an account?{" "}
-            <button type="button" onClick={() => router.push("/auth")}
-              className="text-[#AAFF00] font-semibold bg-transparent border-none cursor-pointer text-[13px]">
-              Sign In
+        {/* Nav */}
+        <nav className="flex-1 px-4 py-6 flex flex-col gap-1">
+          {navItems.map((item) => (
+            <button
+              key={item.label}
+              type="button"
+              onClick={() => router.push(item.route)}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-[14px] font-semibold w-full text-left border-none cursor-pointer transition-colors ${
+                item.active
+                  ? "bg-[#AAFF00]/10 text-gray-900"
+                  : "bg-transparent text-gray-400 hover:bg-gray-50 hover:text-gray-700"
+              }`}
+            >
+              <span className={item.active ? "text-gray-900" : "text-gray-400"}>{item.icon}</span>
+              {item.label}
+              {item.active && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#AAFF00]" />}
             </button>
-          </p>
-        </div>
-      </div>
+          ))}
+        </nav>
 
-<<<<<<< HEAD
-      {/* ── DESKTOP: two column split layout ── */}
-      <div className="hidden lg:flex w-full min-h-svh">
-
-        {/* Left — full height image with overlay text */}
-=======
-      {/* ════════════════════════════════════════
-          TABLET  (md – lg)  — centered card
-      ════════════════════════════════════════ */}
-      <div className="hidden md:flex lg:hidden min-h-svh items-center justify-center p-8">
-        <div className="relative flex flex-col w-full max-w-[420px] min-h-[700px] rounded-[44px] overflow-hidden shadow-[0_48px_120px_rgba(0,0,0,0.8)]">
-
-          {/* Photo */}
-          <div className="relative flex-1 min-h-[420px]">
-            <div className="absolute inset-0 overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=85&auto=format&fit=crop&crop=top"
-                alt="hero"
-                className="w-full h-full object-cover object-top"
-              />
+        {/* User */}
+        <div className="px-6 py-5 border-t border-gray-100">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full overflow-hidden shrink-0">
+              <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80&auto=format&fit=crop&crop=face" alt="avatar" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute inset-0 pointer-events-none z-[2]">
-              <svg className="absolute" style={{ left: "-18%", top: "8%", width: "110%" }} viewBox="0 0 500 520" fill="none">
-                <ellipse cx="210" cy="270" rx="195" ry="195" stroke="#AAFF00" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="900" strokeDashoffset="300" />
+            <div className="min-w-0">
+              <p className="text-[13px] font-semibold text-gray-900 truncate">Tega</p>
+              <p className="text-[11px] text-gray-400 truncate">tega@example.com</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      {/* ── MAIN CONTENT ── */}
+      <div className="flex-1 flex flex-col min-w-0">
+
+        {/* Desktop top bar */}
+        <div className="hidden lg:flex items-center justify-between px-8 py-5 bg-white border-b border-gray-100 shrink-0">
+          <div>
+            <h1 className="text-[20px] font-bold text-gray-900">Dashboard</h1>
+            <p className="text-[13px] text-gray-400">Welcome back, Tega 👋</p>
+          </div>
+          <div className="relative">
+            <button type="button" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center border-none cursor-pointer hover:bg-gray-200 transition-colors">
+              <svg className="w-5 h-5 text-gray-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 01-3.46 0"/>
               </svg>
-            </div>
-            <div className="absolute inset-0 z-[3]" style={{ background: "linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.75) 68%,#0a0a0a 100%)" }} />
-          </div>
-
-          {/* Bottom */}
-          <div className="relative z-10 bg-[#0a0a0a] flex flex-col items-center text-center px-10 pb-10 pt-2 shrink-0">
-            <div className={`mb-5 transition-all duration-300 ease-in-out ${fading ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`}>
-              <h1 className="text-white text-[32px] font-extrabold leading-[1.15] tracking-tight">
-                {slides[active].headline}
-              </h1>
-              <span className="block text-[#AAFF00] text-[32px] font-extrabold leading-[1.15] tracking-tight mb-3">
-                {slides[active].accent}
-              </span>
-              <div className="w-8 h-[3px] bg-[#AAFF00] rounded-full mx-auto mb-3" />
-              <p className="text-white/50 text-[15px] leading-relaxed max-w-[300px] mx-auto">
-                {slides[active].sub}
-              </p>
-            </div>
-            <div className="flex items-center gap-2 mb-6">
-              {slides.map((_, i) => (
-                <button key={i} type="button" onClick={() => goTo(i)}
-                  className={`h-2 rounded-full border-none cursor-pointer transition-all duration-300 ${i === active ? "w-6 bg-[#AAFF00]" : "w-2 bg-[#444]"}`}
-                />
-              ))}
-            </div>
-            <button type="button" onClick={() => router.push("/auth")}
-              className="w-full py-4 bg-[#AAFF00] text-black text-[16px] font-bold rounded-2xl border-none cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all duration-200">
-              Get Started
             </button>
-            <p className="mt-3 text-[13px] text-[#666]">
-              Already have an account?{" "}
-              <button type="button" onClick={() => router.push("/auth")}
-                className="text-[#AAFF00] font-semibold bg-transparent border-none cursor-pointer text-[13px]">
-                Sign In
-              </button>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* ════════════════════════════════════════
-          DESKTOP  (lg+)  — two column split
-      ════════════════════════════════════════ */}
-      <div className="hidden lg:flex min-h-svh">
-
-        {/* Left — full height photo */}
->>>>>>> e26fcc9 (made auth and landing page responsive)
-        <div className="relative flex-1 overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200&q=85&auto=format&fit=crop&crop=top"
-            alt="hero"
-            className="w-full h-full object-cover object-top"
-          />
-<<<<<<< HEAD
-
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/70" />
-
-          {/* Lime arc */}
-          <div className="absolute inset-0 pointer-events-none">
-            <svg className="absolute" style={{ left: "-10%", top: "10%", width: "80%" }} viewBox="0 0 500 520" fill="none">
-              <ellipse cx="210" cy="270" rx="195" ry="195" stroke="#AAFF00" strokeWidth="2" strokeLinecap="round" strokeDasharray="900" strokeDashoffset="300" />
-            </svg>
-          </div>
-
-          {/* Logo top left */}
-=======
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/80" />
-          {/* Lime arc */}
-          <div className="absolute inset-0 pointer-events-none">
-            <svg className="absolute" style={{ left: "-5%", top: "10%", width: "75%" }} viewBox="0 0 500 520" fill="none">
-              <ellipse cx="210" cy="270" rx="195" ry="195" stroke="#AAFF00" strokeWidth="2" strokeLinecap="round" strokeDasharray="900" strokeDashoffset="300" />
-            </svg>
-          </div>
-          {/* Logo */}
->>>>>>> e26fcc9 (made auth and landing page responsive)
-          <div className="absolute top-10 left-10 flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-xl bg-[#AAFF00] flex items-center justify-center text-black text-xl font-black">R</div>
-            <span className="text-white text-[22px] font-extrabold tracking-tight">Riverpay</span>
-          </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> e26fcc9 (made auth and landing page responsive)
-          {/* Bottom text */}
-          <div className="absolute bottom-12 left-10 right-10">
-            <div className={`transition-all duration-300 ${fading ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`}>
-              <h1 className="text-white text-[48px] xl:text-[56px] font-extrabold leading-[1.1] tracking-[-0.03em] mb-3">
-                {slides[active].headline}<br />
-                <span className="text-[#AAFF00]">{slides[active].accent}</span>
-              </h1>
-              <div className="w-10 h-[3px] bg-[#AAFF00] rounded-full mb-4" />
-              <p className="text-white/60 text-[16px] leading-relaxed max-w-[360px]">
-                {slides[active].sub}
-              </p>
-            </div>
-<<<<<<< HEAD
-
-            {/* Dots */}
-=======
->>>>>>> e26fcc9 (made auth and landing page responsive)
-            <div className="flex items-center gap-2 mt-6">
-              {slides.map((_, i) => (
-                <button key={i} type="button" onClick={() => goTo(i)}
-                  className={`h-2 rounded-full border-none cursor-pointer transition-all duration-300 ${i === active ? "w-8 bg-[#AAFF00]" : "w-2 bg-white/30"}`}
-                />
-              ))}
-            </div>
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#AAFF00] rounded-full ring-1 ring-white" />
           </div>
         </div>
 
-<<<<<<< HEAD
-        {/* Right — sign up / sign in panel */}
-        <div className="w-[480px] xl:w-[520px] shrink-0 bg-[#0a0a0a] flex flex-col items-center justify-center px-12 xl:px-16">
+        {/* Scrollable content */}
+        <div className="flex-1 overflow-y-auto pb-24 lg:pb-10">
+          <div className="px-4 pt-5 sm:px-5 sm:pt-5 lg:px-8 lg:pt-8">
 
-          {/* Stats row */}
-          <div className="flex gap-8 mb-12 self-start">
-            {[{ val: "$2B+", label: "Transferred" }, { val: "2M+", label: "Users" }, { val: "0 Fees", label: "This Month" }].map((s) => (
-=======
-        {/* Right — CTA panel */}
-        <div className="w-[460px] xl:w-[520px] shrink-0 bg-[#0a0a0a] flex flex-col justify-center px-12 xl:px-16 py-16">
+            {/* Mobile header */}
+            <div className="lg:hidden">
+              <DashboardHeader />
+            </div>
 
-          {/* Stats */}
-          <div className="flex gap-8 mb-12">
-            {[
-              { val: "$2B+",  label: "Transferred" },
-              { val: "2M+",   label: "Users" },
-              { val: "0 Fees",label: "This Month" },
-            ].map((s) => (
->>>>>>> e26fcc9 (made auth and landing page responsive)
-              <div key={s.label} className="flex flex-col gap-1">
-                <span className="text-[22px] font-bold text-[#AAFF00]">{s.val}</span>
-                <span className="text-[11px] text-[#666] uppercase tracking-widest">{s.label}</span>
+            {/* ── MOBILE + TABLET: single column ── */}
+            <div className="flex flex-col gap-4 lg:hidden">
+              <BalanceCard />
+              <QuickActions />
+              <PromoBanner />
+              <TransactionList />
+            </div>
+
+            {/* ── DESKTOP: two column grid ── */}
+            <div className="hidden lg:grid lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {/* Balance — full width */}
+              <div className="lg:col-span-3 xl:col-span-4">
+                <BalanceCard />
               </div>
-            ))}
+              {/* Quick actions — full width */}
+              <div className="lg:col-span-3 xl:col-span-4">
+                <QuickActions />
+              </div>
+              {/* Promo — 1/3 on lg, 1/2 on xl */}
+              <div className="lg:col-span-1 xl:col-span-2">
+                <PromoBanner />
+              </div>
+              {/* Transactions — 2/3 on lg, 1/2 on xl */}
+              <div className="lg:col-span-2 xl:col-span-2">
+                <TransactionList />
+              </div>
+            </div>
+
           </div>
-
-<<<<<<< HEAD
-          {/* Headline */}
-          <div className="self-start mb-10">
-            <p className="text-[#AAFF00] text-[13px] font-semibold uppercase tracking-widest mb-3">Get Started Today</p>
-            <h2 className="text-white text-[32px] xl:text-[38px] font-extrabold tracking-tight leading-[1.15] mb-4">
-              Banking built<br />for your life
-            </h2>
-            <p className="text-white/40 text-[15px] leading-relaxed max-w-[320px]">
-              Join millions managing money smarter with Riverpay. Fast, secure, and always free.
-            </p>
-          </div>
-
-          {/* CTAs */}
-          <div className="w-full flex flex-col gap-3">
-=======
-          {/* Copy */}
-          <p className="text-[#AAFF00] text-[13px] font-semibold uppercase tracking-widest mb-3">
-            Get Started Today
-          </p>
-          <h2 className="text-white text-[32px] xl:text-[38px] font-extrabold tracking-tight leading-[1.15] mb-4">
-            Banking built<br />for your life
-          </h2>
-          <p className="text-white/40 text-[15px] leading-relaxed mb-10 max-w-[320px]">
-            Join millions managing money smarter with Riverpay. Fast, secure, and always free.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col gap-3">
->>>>>>> e26fcc9 (made auth and landing page responsive)
-            <button type="button" onClick={() => router.push("/auth")}
-              className="w-full py-4 bg-[#AAFF00] text-black text-[16px] font-bold rounded-2xl border-none cursor-pointer hover:opacity-90 transition-opacity">
-              Create Free Account
-            </button>
-            <button type="button" onClick={() => router.push("/auth")}
-<<<<<<< HEAD
-              className="w-full py-4 bg-white/10 text-white text-[16px] font-semibold rounded-2xl border border-white/10 cursor-pointer hover:bg-white/15 transition-colors">
-=======
-              className="w-full py-4 bg-white/8 text-white text-[16px] font-semibold rounded-2xl border border-white/10 cursor-pointer hover:bg-white/15 transition-colors">
->>>>>>> e26fcc9 (made auth and landing page responsive)
-              Sign In
-            </button>
-          </div>
-
-<<<<<<< HEAD
-          {/* Trust note */}
-          <p className="mt-6 text-[12px] text-white/30 text-center">
-=======
-          {/* Trust */}
-          <p className="mt-8 text-[12px] text-white/25 text-center">
->>>>>>> e26fcc9 (made auth and landing page responsive)
-            🔒 Bank-level security · No hidden fees · Cancel anytime
-          </p>
         </div>
-      </div>
 
+        {/* Bottom nav — mobile + tablet only */}
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50">
+          <BottomNav />
+        </div>
+
+      </div>
     </div>
   );
 }
