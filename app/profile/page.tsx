@@ -66,7 +66,7 @@ export default function ProfilePage() {
     <div className="min-h-svh w-full max-w-[100vw] overflow-x-hidden bg-[#f5f5f5] flex flex-col lg:flex-row">
 
       {/* ── SIDEBAR — desktop only ── */}
-      <aside className="hidden lg:flex flex-col w-[220px] xl:w-[260px] 2xl:w-[280px] shrink-0 bg-white border-r border-gray-100 min-h-screen sticky top-0">
+      <aside className="hidden lg:flex flex-col w-[240px] xl:w-[260px] shrink-0 bg-white border-r border-gray-100 min-h-screen sticky top-0">
         <div className="px-6 py-6 border-b border-gray-100">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-[#AAFF00] flex items-center justify-center text-black text-lg font-black">R</div>
@@ -95,7 +95,7 @@ export default function ProfilePage() {
       <div className="flex-1 flex flex-col min-w-0">
 
         {/* Desktop top bar */}
-        <div className="hidden lg:flex items-center justify-between px-6 xl:px-8 py-5 bg-white border-b border-gray-100 shrink-0">
+        <div className="hidden lg:flex items-center justify-between px-8 py-5 bg-white border-b border-gray-100 shrink-0">
           <div>
             <h1 className="text-[20px] font-bold text-gray-900">Profile</h1>
             <p className="text-[13px] text-gray-400">Manage your account</p>
@@ -109,8 +109,8 @@ export default function ProfilePage() {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto pb-28 lg:pb-10">
-          <div className="px-4 sm:px-5 md:px-6 pt-6 lg:px-8 lg:pt-8 w-full max-w-full sm:max-w-[500px] md:max-w-[560px] lg:max-w-[600px] mx-auto lg:mx-0">
+        <div className="flex-1 overflow-y-auto pb-24 lg:pb-10">
+          <div className="px-4 pt-5 sm:px-5 sm:pt-5 md:max-w-[560px] lg:px-8 lg:pt-8 w-full max-w-full sm:max-w-[500px] lg:max-w-[600px] mx-auto lg:mx-0">
 
             {/* ── MOBILE HEADER ── */}
             <div className="flex items-center justify-between mb-6 lg:hidden">
