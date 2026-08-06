@@ -63,10 +63,10 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-svh w-full bg-[#f5f5f5] flex flex-col lg:flex-row">
+    <div className="min-h-svh w-full max-w-[100vw] overflow-x-hidden bg-[#f5f5f5] flex flex-col lg:flex-row">
 
       {/* ── SIDEBAR — desktop only ── */}
-      <aside className="hidden lg:flex flex-col w-[240px] xl:w-[260px] shrink-0 bg-white border-r border-gray-100 min-h-screen sticky top-0">
+      <aside className="hidden lg:flex flex-col w-[220px] xl:w-[260px] 2xl:w-[280px] shrink-0 bg-white border-r border-gray-100 min-h-screen sticky top-0">
         <div className="px-6 py-6 border-b border-gray-100">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-[#AAFF00] flex items-center justify-center text-black text-lg font-black">R</div>
@@ -95,7 +95,7 @@ export default function ProfilePage() {
       <div className="flex-1 flex flex-col min-w-0">
 
         {/* Desktop top bar */}
-        <div className="hidden lg:flex items-center justify-between px-8 py-5 bg-white border-b border-gray-100 shrink-0">
+        <div className="hidden lg:flex items-center justify-between px-6 xl:px-8 py-5 bg-white border-b border-gray-100 shrink-0">
           <div>
             <h1 className="text-[20px] font-bold text-gray-900">Profile</h1>
             <p className="text-[13px] text-gray-400">Manage your account</p>
@@ -110,21 +110,21 @@ export default function ProfilePage() {
         </div>
 
         <div className="flex-1 overflow-y-auto pb-28 lg:pb-10">
-          <div className="px-5 pt-6 lg:px-8 lg:pt-8 w-full max-w-[500px] lg:max-w-[600px] mx-auto lg:mx-0">
+          <div className="px-4 sm:px-5 md:px-6 pt-6 lg:px-8 lg:pt-8 w-full max-w-full sm:max-w-[500px] md:max-w-[560px] lg:max-w-[600px] mx-auto lg:mx-0">
 
             {/* ── MOBILE HEADER ── */}
             <div className="flex items-center justify-between mb-6 lg:hidden">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 min-w-0 flex-1">
                 <div className="w-11 h-11 rounded-full overflow-hidden ring-2 ring-[#AAFF00]/40 shrink-0">
                   <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80&auto=format&fit=crop&crop=face" alt="avatar" className="w-full h-full object-cover" />
                 </div>
-                <div>
-                  <p className="text-[15px] font-bold text-gray-900 leading-tight">Hello Tega</p>
-                  <p className="text-[12px] text-gray-400">tegascollins@example.com</p>
+                <div className="min-w-0">
+                  <p className="text-[15px] font-bold text-gray-900 leading-tight truncate">Hello Tega</p>
+                  <p className="text-[12px] text-gray-400 truncate">tegascollins@example.com</p>
                 </div>
               </div>
               {/* Edit icon */}
-              <button type="button" className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm border-none cursor-pointer hover:bg-gray-50">
+              <button type="button" className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm border-none cursor-pointer hover:bg-gray-50 shrink-0">
                 <svg className="w-4 h-4 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
                   <circle cx="12" cy="7" r="4"/>
