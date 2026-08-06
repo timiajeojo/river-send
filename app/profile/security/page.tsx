@@ -21,10 +21,10 @@ function Toggle({ enabled, onToggle }: { enabled: boolean; onToggle: () => void 
 
 function SecurityRow({ label, sub, children }: { label: string; sub?: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-center justify-between px-5 py-4">
-      <div className="flex-1 min-w-0 pr-4">
-        <p className="text-[14px] font-semibold text-gray-900">{label}</p>
-        {sub && <p className="text-[12px] text-gray-400 mt-0.5">{sub}</p>}
+    <div className="flex items-center justify-between gap-3 px-4 py-4 sm:px-5">
+      <div className="flex-1 min-w-0 pr-2">
+        <p className="text-[14px] font-semibold text-gray-900 truncate">{label}</p>
+        {sub && <p className="text-[12px] text-gray-400 mt-0.5 truncate">{sub}</p>}
       </div>
       <div className="shrink-0">{children}</div>
     </div>
@@ -62,8 +62,8 @@ export default function SecurityPage() {
   );
 
   return (
-    <div className="min-h-svh w-full bg-[#f5f5f5]">
-      <div className="max-w-[500px] lg:max-w-[600px] mx-auto px-5 pt-6 pb-16 lg:px-8 lg:pt-8">
+    <div className="min-h-svh w-full max-w-[100vw] overflow-x-hidden bg-[#f5f5f5]">
+      <div className="max-w-full sm:max-w-[500px] lg:max-w-[600px] mx-auto px-4 pt-5 pb-16 sm:px-5 sm:pt-5 lg:px-8 lg:pt-8">
 
         {/* Back + title */}
         <div className="flex items-center gap-3 mb-7">
@@ -85,7 +85,7 @@ export default function SecurityPage() {
 
         {/* Change password */}
         <p className="text-[12px] font-bold text-gray-400 uppercase tracking-wider mb-3">Change Password</p>
-        <div className="bg-white rounded-2xl shadow-sm p-5 mb-5 flex flex-col gap-4">
+        <div className="bg-white rounded-2xl shadow-sm p-4 sm:p-5 mb-5 flex flex-col gap-4">
           <div>
             <label className={lCls}>Current Password</label>
             <div className="relative">
@@ -123,11 +123,11 @@ export default function SecurityPage() {
           <SecurityRow label="Two-Factor Authentication" sub="Require a code when signing in">
             <Toggle enabled={twoFA} onToggle={() => setTwoFA(v => !v)} />
           </SecurityRow>
-          <div className="h-px bg-gray-50 mx-5" />
+          <div className="h-px bg-gray-50 mx-4 sm:mx-5" />
           <SecurityRow label="Biometric Login" sub="Use fingerprint or Face ID">
             <Toggle enabled={biometric} onToggle={() => setBiometric(v => !v)} />
           </SecurityRow>
-          <div className="h-px bg-gray-50 mx-5" />
+          <div className="h-px bg-gray-50 mx-4 sm:mx-5" />
           <SecurityRow label="Login Alerts" sub="Get notified of new sign-ins">
             <Toggle enabled={loginAlerts} onToggle={() => setLoginAlerts(v => !v)} />
           </SecurityRow>
@@ -136,8 +136,8 @@ export default function SecurityPage() {
         {/* Danger zone */}
         <p className="text-[12px] font-bold text-gray-400 uppercase tracking-wider mb-3">Danger Zone</p>
         <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-          <button type="button" className="w-full flex items-center justify-between px-5 py-4 text-left border-none cursor-pointer hover:bg-red-50 transition-colors">
-            <div>
+          <button type="button" className="w-full flex items-center justify-between gap-3 px-4 py-4 sm:px-5 text-left border-none cursor-pointer hover:bg-red-50 transition-colors">
+            <div className="flex-1 min-w-0">
               <p className="text-[14px] font-semibold text-red-500">Close Account</p>
               <p className="text-[12px] text-gray-400 mt-0.5">Permanently delete your account and data</p>
             </div>
