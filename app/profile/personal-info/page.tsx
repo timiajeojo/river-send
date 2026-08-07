@@ -1,4 +1,4 @@
-q// app/profile/personal-info/page.tsx
+// app/profile/personal-info/page.tsx
 "use client";
 
 import { useState } from "react";
