@@ -1,4 +1,4 @@
-// app/profile/personal-info/page.tsx
+q// app/profile/personal-info/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -31,8 +31,8 @@ export default function PersonalInfoPage() {
   };
 
   return (
-    <div className="min-h-svh w-full bg-[#f5f5f5]">
-      <div className="max-w-[500px] lg:max-w-[600px] mx-auto px-5 pt-6 pb-16 lg:px-8 lg:pt-8">
+    <div className="min-h-svh w-full max-w-[100vw] overflow-x-hidden bg-[#f5f5f5]">
+      <div className="max-w-full sm:max-w-[500px] lg:max-w-[600px] mx-auto px-4 pt-5 pb-16 sm:px-5 sm:pt-5 lg:px-8 lg:pt-8">
 
         {/* Back + title */}
         <div className="flex items-center gap-3 mb-7">
@@ -87,7 +87,7 @@ export default function PersonalInfoPage() {
 
         {/* Form fields */}
         <div className="flex flex-col gap-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className={lCls}>First Name</label>
               <input name="firstName" value={form.firstName} onChange={handle} disabled={!editing} className={`${iCls} ${!editing ? "bg-gray-50 text-gray-500" : ""}`} />
@@ -113,7 +113,7 @@ export default function PersonalInfoPage() {
             <input name="address" value={form.address} onChange={handle} disabled={!editing} className={`${iCls} ${!editing ? "bg-gray-50 text-gray-500" : ""}`} />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className={lCls}>City</label>
               <input name="city" value={form.city} onChange={handle} disabled={!editing} className={`${iCls} ${!editing ? "bg-gray-50 text-gray-500" : ""}`} />
@@ -134,5 +134,4 @@ export default function PersonalInfoPage() {
       </div>
     </div>
   );
-                   }
-                
+}
