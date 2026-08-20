@@ -1,7 +1,9 @@
 // app/dashboard/page.tsx
 "use client";
 
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { onAuthChange } from "@/lib/auth";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import BalanceCard from "@/components/dashboard/BalanceCard";
 import QuickActions from "@/components/dashboard/QuickActions";
@@ -19,20 +21,25 @@ const navItems = [
 export default function DashboardPage() {
   const router = useRouter();
 
+  // Redirect to /auth if not signed in
+  useEffect(() => {
+    const unsubscribe = onAuthChange((user) => {
+      if (!user) router.replace("/auth");
+    });
+    return () => unsubscribe();
+  }, [router]);
+
   return (
     <div className="min-h-svh w-full bg-[#f5f5f5] flex flex-col lg:flex-row">
 
       {/* ── SIDEBAR — lg+ only ── */}
       <aside className="hidden lg:flex flex-col w-[240px] xl:w-[260px] shrink-0 bg-white border-r border-gray-100 min-h-screen sticky top-0">
-        {/* Logo */}
         <div className="px-6 py-6 border-b border-gray-100">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-[#AAFF00] flex items-center justify-center text-black text-lg font-black">R</div>
             <span className="text-[20px] font-extrabold tracking-tight text-gray-900">Riverpay</span>
           </div>
         </div>
-
-        {/* Nav */}
         <nav className="flex-1 px-4 py-6 flex flex-col gap-1">
           {navItems.map((item) => (
             <button
@@ -40,9 +47,7 @@ export default function DashboardPage() {
               type="button"
               onClick={() => router.push(item.route)}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl text-[14px] font-semibold w-full text-left border-none cursor-pointer transition-colors ${
-                item.active
-                  ? "bg-[#AAFF00]/10 text-gray-900"
-                  : "bg-transparent text-gray-400 hover:bg-gray-50 hover:text-gray-700"
+                item.active ? "bg-[#AAFF00]/10 text-gray-900" : "bg-transparent text-gray-400 hover:bg-gray-50 hover:text-gray-700"
               }`}
             >
               <span className={item.active ? "text-gray-900" : "text-gray-400"}>{item.icon}</span>
@@ -51,8 +56,6 @@ export default function DashboardPage() {
             </button>
           ))}
         </nav>
-
-        {/* User */}
         <div className="px-6 py-5 border-t border-gray-100">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full overflow-hidden shrink-0">
@@ -68,8 +71,6 @@ export default function DashboardPage() {
 
       {/* ── MAIN CONTENT ── */}
       <div className="flex-1 flex flex-col min-w-0">
-
-        {/* Desktop top bar */}
         <div className="hidden lg:flex items-center justify-between px-8 py-5 bg-white border-b border-gray-100 shrink-0">
           <div>
             <h1 className="text-[20px] font-bold text-gray-900">Dashboard</h1>
@@ -86,52 +87,29 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Scrollable content */}
         <div className="flex-1 overflow-y-auto pb-24 lg:pb-10">
           <div className="px-4 pt-5 sm:px-5 sm:pt-5 lg:px-8 lg:pt-8">
-
-            {/* Mobile header */}
-            <div className="lg:hidden">
-              <DashboardHeader />
-            </div>
-
-            {/* ── MOBILE + TABLET: single column ── */}
+            <div className="lg:hidden"><DashboardHeader /></div>
             <div className="flex flex-col gap-4 lg:hidden">
               <BalanceCard />
               <QuickActions />
               <PromoBanner />
               <TransactionList />
             </div>
-
-            {/* ── DESKTOP: two column grid ── */}
             <div className="hidden lg:grid lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {/* Balance — full width */}
-              <div className="lg:col-span-3 xl:col-span-4">
-                <BalanceCard />
-              </div>
-              {/* Quick actions — full width */}
-              <div className="lg:col-span-3 xl:col-span-4">
-                <QuickActions />
-              </div>
-              {/* Promo — 1/3 on lg, 1/2 on xl */}
-              <div className="lg:col-span-1 xl:col-span-2">
-                <PromoBanner />
-              </div>
-              {/* Transactions — 2/3 on lg, 1/2 on xl */}
-              <div className="lg:col-span-2 xl:col-span-2">
-                <TransactionList />
-              </div>
+              <div className="lg:col-span-3 xl:col-span-4"><BalanceCard /></div>
+              <div className="lg:col-span-3 xl:col-span-4"><QuickActions /></div>
+              <div className="lg:col-span-1 xl:col-span-2"><PromoBanner /></div>
+              <div className="lg:col-span-2 xl:col-span-2"><TransactionList /></div>
             </div>
-
           </div>
         </div>
 
-        {/* Bottom nav — mobile + tablet only */}
         <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50">
           <BottomNav />
         </div>
-
       </div>
+
     </div>
   );
 }
